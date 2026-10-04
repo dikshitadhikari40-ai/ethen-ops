@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Approval Popup — The ETHEN Pattern (Open Template)</title>
+<style>
+  :root{
+    --bg:#0d0f12; --card:#1a1e25; --line:#262c36;
+    --gold:#c9a227; --gold2:#e6c766; --ink:#e9e6dd; --mut:#9aa3ad;
+    --green:#2ecc71; --red:#e74c3c; --amber:#f39c12;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+  h1{font-family:var(--serif);font-weight:400;font-size:1.6rem;margin-bottom:6px}
+  h1 span{color:var(--gold2)}
+  .sub{color:var(--mut);font-size:.9rem;margin-bottom:32px;max-width:52ch;text-align:center}
+  /* popup */
+  .popup{width:100%;max-width:460px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .popup-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .popup-head b{font-size:.95rem}
+  .popup-head .who{margin-left:auto;color:var(--mut);font-size:.75rem}
+  .popup-body{padding:20px}
+  .action{font-family:var(--serif);color:var(--gold2);font-size:1.05rem;margin-bottom:14px}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:.88rem;margin-bottom:18px}
+  .kv dt{color:var(--mut)}
+  .kv dd{font-weight:600}
+  .risk{display:inline-block;font-size:.72rem;padding:3px 10px;border-radius:20px;border:1px solid var(--line);color:var(--mut);margin-bottom:18px}
+  .btns{display:flex;gap:10px}
+  .btn{flex:1;padding:12px;border-radius:8px;border:none;font-size:.95rem;font-weight:600;cursor:pointer;transition:transform .12s}
+  .btn:hover{transform:translateY(-1px)}
+  .approve{background:var(--green);color:#06220f}
+  .reject{background:transparent;border:1px solid var(--line);color:var(--mut)}
+  .state{margin-top:16px;padding:12px 16px;border-radius:8px;font-size:.88rem;display:none}
+  .state.ok{display:block;background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.4)}
+  .state.no{display:block;background:rgba(231,76,60,.12);border:1px solid rgba(231,76,60,.4)}
+  footer{margin-top:28px;color:var(--mut);font-size:.8rem;text-align:center}
+  footer a{color:var(--gold2);text-decoration:none}
+</style>
+</head>
+<body>
+  <h1>Approval Popup — <span>the ETHEN pattern</span></h1>
+  <p class="sub">Every write action an AI takes passes a human. This is the open template: identity-scoped, action-named, one-tap approve/reject. Fork it into any agent UI.</p>
+
+  <div class="popup" role="dialog" aria-label="Approval request">
+    <div class="popup-head">
+      <span class="dot"></span>
+      <b>Approval needed</b>
+      <span class="who">requested by AI · for: Approver</span>
+    </div>
+    <div class="popup-body">
+      <div class="action">Draft: Payment Voucher — PV-0421</div>
+      <dl class="kv">
+        <dt>Action</dt><dd>Create journal entry</dd>
+        <dt>Party</dt><dd>Acme Suppliers Pvt. Ltd.</dd>
+        <dt>Amount</dt><dd>NPR 48,500.00</dd>
+        <dt>Source</dt><dd>Invoice INV-8817 (OCR, 99.2% confidence)</dd>
+      </dl>
+      <span class="risk">scope: Accounts · irreversible once posted</span>
+      <div class="btns">
+        <button class="btn reject" onclick="setState('no')">Reject</button>
+        <button class="btn approve" onclick="setState('ok')">Approve</button>
+      </div>
+      <div id="state" class="state"></div>
+    </div>
+  </div>
+
+  <footer>
+    Open template from <a href="https://github.com/dikshitadhikari40-ai/ethen-ops">ETHEN Ops</a> · MIT ·
+    ⭐ Star / 🍴 fork the repo if this saved you a design cycle
+  </footer>
+
+<script>
+  function setState(kind){
+    const el = document.getElementById('state');
+    if (kind === 'ok') { el.className = 'state ok'; el.textContent = '✅ Approved — the AI executes and reports back to the owner channel.'; }
+    else { el.className = 'state no'; el.textContent = '🚫 Rejected — the draft is discarded and the requester notified. No write happens.'; }
+  }
+</script>
+</body>
+</html>

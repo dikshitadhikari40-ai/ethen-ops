@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ETHEN WhatsApp Desk — Restaurant Demo</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0b141a; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; display:flex; justify-content:center; }
+  .phone { width:390px; background:#0b141a; overflow:hidden; border-radius:0; }
+  .statusbar { background:#1f2c34; color:#e9edef; font-size:13px; font-weight:600; padding:8px 18px 4px; display:flex; justify-content:space-between; }
+  /* header */
+  .header { background:#1f2c34; padding:10px 14px; display:flex; align-items:center; gap:11px; border-bottom:1px solid rgba(255,255,255,.04);}
+  .back { color:#aebac1; font-size:20px; margin-right:2px;}
+  .avatar { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,#00a884,#056162); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:16px; }
+  .hd-name { color:#e9edef; font-size:16px; font-weight:600; }
+  .hd-sub { color:#8696a0; font-size:12px; margin-top:2px; }
+  .hd-icons { margin-left:auto; color:#aebac1; font-size:18px; letter-spacing:12px; }
+  /* chat */
+  .chat { padding:16px 12px 6px; background-image:radial-gradient(circle at 20% 10%, #132028 0%, #0b141a 60%); display:flex; flex-direction:column; gap:6px; min-height:640px;}
+  .day { align-self:center; background:#182229; color:#8696a0; font-size:12px; padding:5px 12px; border-radius:8px; margin:4px 0 8px;}
+  .msg { max-width:82%; padding:7px 9px 16px; border-radius:8px; font-size:14.2px; line-height:1.42; color:#e9edef; position:relative; }
+  .in { align-self:flex-start; background:#202c33; border-top-left-radius:0; }
+  .out { align-self:flex-end; background:#005c4b; border-top-right-radius:0; }
+  .time { position:absolute; bottom:4px; right:8px; font-size:10.5px; color:rgba(233,237,239,.55); }
+  .in .time { color:rgba(233,237,239,.45); }
+  .ticks { color:#53bdeb; font-size:11px; margin-left:3px;}
+  .typing { align-self:flex-start; background:#202c33; color:#8696a0; padding:10px 14px 16px; }
+  .dots span { display:inline-block; width:7px; height:7px; border-radius:50%; background:#8696a0; margin-right:4px; animation:blink 1.2s infinite;}
+  .dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+  @keyframes blink {0%,80%,100%{opacity:.25}40%{opacity:1}}
+  .menu { background:#1c272d; border-radius:6px; padding:8px 10px; margin-top:5px; font-size:13.5px;}
+  .menu b { color:#7ad0a8; }
+  .menu .row { display:flex; justify-content:space-between; padding:3px 0; }
+  .menu .row span:last-child { color:#8696a0; }
+  .badge { display:inline-block; background:#00a884; color:#0b141a; font-size:10.5px; font-weight:700; border-radius:4px; padding:2px 7px; margin-top:5px;}
+  /* footer */
+  .powered { background:#1f2c34; text-align:center; padding:12px; border-top:1px solid rgba(255,255,255,.05);}
+  .powered .p1 { color:#8696a0; font-size:11px; letter-spacing:.6px; }
+  .powered .p2 { color:#00a884; font-size:14px; font-weight:700; letter-spacing:2px; margin-top:2px;}
+  .inputbar { background:#1f2c34; display:flex; gap:10px; padding:9px 12px 14px; align-items:center;}
+  .inputbar .box { flex:1; background:#2a3942; border-radius:20px; padding:9px 14px; color:#8696a0; font-size:13.5px;}
+  .inputbar .mic { width:38px; height:38px; border-radius:50%; background:#00a884; color:#0b141a; display:flex; align-items:center; justify-content:center; font-size:15px;}
+</style>
+</head>
+<body>
+<div class="phone" id="phone">
+  <div class="statusbar"><span>2:14 AM</span><span>📶 🔋</span></div>
+  <div class="header">
+    <span class="back">‹</span>
+    <div class="avatar">थ</div>
+    <div><div class="hd-name">Himalayan Bistro</div><div class="hd-sub">AI Desk • online 24/7</div></div>
+    <div class="hd-icons">⌕ ⋮</div>
+  </div>
+  <div class="chat">
+    <div class="day">Today</div>
+
+    <div class="msg in">Namaste! Do you have a table for 6 tonight around 7:30? 🍽️<span class="time">18:42</span></div>
+    <div class="msg out">Namaste! 🙏 Yes — we have availability at 7:30 PM. Rooftop or garden seating? Garden is quieter, rooftop has the mountain view. I can hold either for 15 minutes.<span class="time">18:42<span class="ticks">✓✓</span></span></div>
+
+    <div class="msg in">Rooftop please! And what's on the menu tonight?<span class="time">18:43</span></div>
+    <div class="msg out">Rooftop for 6 confirmed ✅ (Booking #HB-2317, 7:30 PM)
+      <div class="menu">
+        <b>Tonight's specials</b>
+        <div class="row"><span>Chicken Sekuwa Platter</span><span>NPR 780</span></div>
+        <div class="row"><span>Yak Cheese Momo (new)</span><span>NPR 520</span></div>
+        <div class="row"><span>Thakali Set Dinner</span><span>NPR 650</span></div>
+        <div class="row"><span>Full menu</span><span>himalayanbistro.com/menu</span></div>
+      </div>
+      Reply <b>V</b> vegan, <b>G</b> gluten-free options.<span class="time">18:42<span class="ticks">✓✓</span></span></div>
+
+    <div class="msg in">One vegan in our group — V please<span class="time">18:44</span></div>
+    <div class="msg out">Noted — 1 vegan 🌱 Kitchen will prepare:
+      <div class="menu">
+        <div class="row"><span>Vegan Thakali Set</span><span>NPR 560</span></div>
+        <div class="row"><span>Veg momo (no dairy)</span><span>NPR 420</span></div>
+      </div>
+      Anything else — cake for an occasion? 🎂<span class="time">18:44<span class="ticks">✓✓</span></span></div>
+
+    <div class="msg in">No that's perfect, see you at 7:30!</div>
+    <div class="msg out">See you tonight! Booking #HB-2317 is confirmed. I'll send directions at 7:00 PM. <span class="badge">AI answered in 9 seconds — no staff time used</span><span class="time">18:44<span class="ticks">✓✓</span></span></div>
+
+    <div class="msg typing"><span class="dots"><span></span><span></span><span></span></span><span class="time">typing…</span></div>
+  </div>
+  <div class="powered">
+    <div class="p1">CUSTOMER SUPPORT, BOOKINGS & MENUS — ANSWERED INSTANTLY</div>
+    <div class="p2">Powered by ETHEN</div>
+  </div>
+  <div class="inputbar"><div class="box">Type a message</div><div class="mic">🎤</div></div>
+</div>
+</body>
+</html>
