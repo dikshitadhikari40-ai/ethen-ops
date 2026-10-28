@@ -74,7 +74,7 @@ Full offers and pricing → [`/offers`](./offers)
 
 ## 💬 Contact
 
-- **WhatsApp:** `wa.me/YOUR_NUMBER` *(placeholder — wire your number here)*
+- **WhatsApp:** `wa.me/9779801309329` *(placeholder — wire your number here)*
 - **Email:** `dikshitadhikari40@gmail.com`
 - **WhatsApp (fastest):** [+977 9801309329](https://wa.me/9779801309329?text=Hi%20ETHEN%20Ops%20%E2%80%94%20I%20saw%20your%20portfolio)
 

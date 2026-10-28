@@ -13,4 +13,4 @@ For businesses outside Nepal that want an AI operations department, not another 
 ## Why from Nepal
 The system is proven daily in a live manufacturing environment — real ERP reads, real invoices, real staff depending on it. You get the same operator at global-remote rates.
 
-**Book a 15-minute screen-share of the live system — no slides:** `wa.me/YOUR_NUMBER`
+**Book a 15-minute screen-share of the live system — no slides:** `wa.me/9779801309329`
